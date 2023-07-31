@@ -1,0 +1,165 @@
+*,
+*:before,
+*:after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	background: rgb(76, 75, 75);
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: #fff;
+	font-size: 16px;
+	scroll-behavior: smooth;
+	height: 100%;
+	overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+	width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #fff;
+	border-radius: 50px;
+}
+
+img {
+	max-width: 100%;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.header__background-img {
+	background: url(https://images.wallpaperscraft.ru/image/single/samuraj_voin_siluet_216195_3840x2160.jpg) center / cover no-repeat fixed;
+}
+
+.fullscreen {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+}
+
+.header_h1 {
+	color: #888686;
+	position: relative;
+	top: 65vh;
+	font-size: calc(30px + 10 * (100vw / 1366));
+}
+
+.maxWidth {
+	max-width: 90%;
+	margin: 0px auto;
+}
+
+.h2 {
+	font-weight: bold;
+	font-size: calc(30px + 10 * (100vw / 1366));
+	padding: 10px 0;
+}
+
+.block__text {
+	font-size: calc(18px + 5 * (100vw / 1366));
+	padding: 10px 0;
+	word-spacing: 4px;
+	line-height: 28px;
+}
+
+.block__text:last-child {
+	padding-bottom: 0;
+}
+
+.gallery {
+	padding: 0 30px;
+	position: relative;
+}
+
+.gallery h2 {
+	padding-bottom: 20px;
+	padding-top: 0;
+}
+
+.img__card img {
+	width: calc(300px + 100 * (100vw / 1366));
+	height: calc(300px + 100 * (100vw / 1366));
+}
+
+.img__card {
+	text-align: center;
+}
+
+
+.card .swiper-button-next::after,
+.card .swiper-button-prev::after {
+	color: #fff;
+	font-size: 50px;
+}
+.card .swiper-button-next{
+	padding-left: 18px;
+}
+.card .swiper-button-prev{
+	padding-right: 18px;
+}
+.card .swiper-pagination {
+	bottom: -30px;
+}
+
+.card .swiper-pagination-bullet {
+	width: 10px;
+	height: 10px;
+	line-height: 20px;
+	font-size: 14px;
+	background-color: #fff;
+}
+
+.text__card {
+	font-size: 25px;
+	padding: 5px 0;
+	text-align: center;
+}
+
+.list__item {
+	font-size: calc(18px + 5 * (100vw / 1366));
+	padding: 10px 0;
+	word-spacing: 4px;
+	line-height: 28px;
+}
+
+.list__item:first-child {
+	padding-top: 30px;
+}
+
+
+@media (max-width: 767px) {
+	.maxWidth {
+		max-width: 100%;
+	}
+
+	.header_h1 {
+		font-size: calc(30px + (10 + 10 * 0.7) * ((100vw - 320px) / 1366));
+	}
+
+	.h2 {
+		font-size: calc(30px + (10 + 10 * 0.7) * ((100vw - 320px) / 1366));
+	}
+
+	.block__text {
+		font-size: calc(18px + (5 + 5 * 0.7) * ((100vw - 320px) / 1366));
+	}
+
+	.list__item {
+		font-size: calc(18px + (5 + 5 * 0.7) * ((100vw - 320px) / 1366));
+	}
+	.img__card img {
+		width: calc(300px + (100 + 100 * 0.7) * ((100vw - 320px) / 1366));
+		height: calc(300px + (100 + 100 * 0.7) * ((100vw - 320px) / 1366));
+	}
+}
