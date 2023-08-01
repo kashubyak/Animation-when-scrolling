@@ -1,37 +1,26 @@
 //Animation Cite!
-const animItems = document.querySelectorAll('._anim-items');
-if (animItems.length > 0) {
-	window.addEventListener('scroll', animOnScroll);
-
-	function animOnScroll() {
-		for (let i = 0; i < animItems.length; i++) {
-			const animItem = animItems[i];
-			const animItemHeight = animItem.offsetHeight;
-			const animItemOffset = offset(animItem).top;
-			const animStart = 4;
-			let animItemPoint = window.innerHeight - animItemHeight / animStart;
-			if (animItemHeight > window.innerHeight) {
-				animItemPoint = window.innerHeight - window.innerHeight / animStart;
-			}
-			if ((window.pageYOffset > (animItemOffset - animItemPoint)) && window.pageYOffset < (animItemOffset + animItemHeight)) {
-				animItem.classList.add('_active');
-			} else {
-				if (!animItem.classList.contains('_anim-no-hide')) {
-					animItem.classList.remove('_active');
-				}
+let options = {
+	root: null,
+	rootMargin: '5px',
+	threshold: 0.25,
+};
+let targets = document.querySelectorAll('._anim-items');
+let callback = function (entries, observer) {
+	entries.forEach(entry => {
+		if (entry.isIntersecting) {
+			entry.target.classList.add('_active');
+		} else {
+			if (!entry.target.classList.contains('_anim-no-hide')) {
+				entry.target.classList.remove('_active');
 			}
 		}
-	}
-	function offset(el) {
-		const rect = el.getBoundingClientRect(),
-			scrollLeft = window.pageXoffset || document.documentElement.scrollLeft,
-			scrollTop = window.pageYoffset || document.documentElement.scrollTop;
-		return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
-	}
-	setTimeout(() => {
-		animOnScroll();
-	}, 500);
+
+	});
 }
+let observer = new IntersectionObserver(callback, options);
+targets.forEach(target => {
+	observer.observe(target);
+});
 
 //Swiper!
 new Swiper('.card', {

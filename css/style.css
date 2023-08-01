@@ -50,16 +50,16 @@ img {
 }
 
 ._anim-show {
-	transform: translateY(50%);
+	transform: translateY(120%);
 	opacity: 0;
 	transition: all 0.8s ease 0s;
 }
+
 ._anim-show._active,
-._active ._anim-show{
+._active ._anim-show {
 	opacity: 1;
 	transform: translateY(0px);
 }
-
 
 .header_text {
 	padding: 10px;
@@ -105,6 +105,14 @@ img {
 	font-weight: bold;
 	font-size: calc(30px + 10 * (100vw / 1366));
 	padding: 10px 0;
+	transform: translate(0px, 50%);
+	opacity: 0;
+	transition: all 0.8s ease 0s;
+}
+
+.h2._active {
+	transform: translate(0px, 0px);
+	opacity: 1;
 }
 
 .block__text {
@@ -138,6 +146,19 @@ img {
 	text-align: center;
 }
 
+.card__item p,
+.card__item img {
+	opacity: 0;
+	transform: translate(120%, 0%);
+	transition: all 0.4s ease 0s;
+}
+
+.card__item._active p,
+.card__item._active img {
+	transform: translate(0px, 0px);
+	transition: all 0.7s ease 0s;
+	opacity: 1;
+}
 
 .card .swiper-button-next::after,
 .card .swiper-button-prev::after {
@@ -146,11 +167,11 @@ img {
 }
 
 .card .swiper-button-next {
-	padding-left: 20px;
+	padding-left: 25px;
 }
 
 .card .swiper-button-prev {
-	padding-right: 10px;
+	padding-right: 25px;
 }
 
 .card .swiper-pagination {
@@ -178,6 +199,45 @@ img {
 	line-height: 28px;
 }
 
+.list__ul .list__item {
+	transform: translate(-100%, 0px);
+	transition: all 0.4s ease 0s;
+	opacity: 0;
+}
+
+.list__ul._active .list__item {
+	transform: translate(0px, 0px);
+	opacity: 1;
+}
+
+.list__ul._active .list__item:nth-child(2) {
+	transition: all 0.4s ease 0.2s;
+}
+
+.list__ul._active .list__item:nth-child(3) {
+	transition: all 0.4s ease 0.4s;
+}
+
+.list__ul._active .list__item:nth-child(4) {
+	transition: all 0.4s ease 0.6s;
+}
+
+.list__ul._active .list__item:nth-child(5) {
+	transition: all 0.4s ease 0.8s;
+}
+
+.list__ul._active .list__item:nth-child(6) {
+	transition: all 0.4s ease 1s;
+}
+
+.list__ul .list__item:nth-child(1) {
+	transition: all 0.4s ease 0.1s;
+}
+
+.list__ul .list__item:nth-child(2) {
+	transition: all 0.4s ease 0.2s;
+}
+
 .list__item:first-child {
 	padding-top: 30px;
 }
@@ -196,7 +256,6 @@ img {
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.3s ease;
-
 }
 
 .modal.open {
