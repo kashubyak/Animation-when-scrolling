@@ -39,7 +39,7 @@ img {
 }
 
 .header__background-img {
-	background: url(../img/background.jpeg);
+	background: url(../img/background.jpeg) center / cover no-repeat fixed;
 }
 
 .fullscreen {
