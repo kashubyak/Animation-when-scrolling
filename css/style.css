@@ -39,7 +39,7 @@ img {
 }
 
 .header__background-img {
-	background: url(https://images.wallpaperscraft.ru/image/single/samuraj_voin_siluet_216195_3840x2160.jpg) center / cover no-repeat fixed;
+	background: url(../img/background.jpeg);
 }
 
 .fullscreen {
