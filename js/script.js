@@ -85,3 +85,38 @@ function closeModal() {
 	}
 };
 
+/// Lazy loading
+
+const lazyImages = document.querySelectorAll('img[data-src]');
+const map = document.querySelector('.map');
+const windowHeight = document.documentElement.clientHeight;
+let lazyImagesPosition = [];
+if (lazyImages.length > 0) {
+	lazyImages.forEach(img => {
+		if (img.dataset.src || img.dataset.srcset) {
+			lazyImagesPosition.push(img.getBoundingClientRect().top + scrollY);
+			lazyScrollCheck();
+		}
+	});
+}
+window.addEventListener("scroll", function () {
+	console.log('work')
+	lazyScrollCheck();
+});
+function lazyScroll() {
+	console.log('work')
+	lazyScrollCheck();
+}
+function lazyScrollCheck() {
+	let imgIndex = lazyImagesPosition.findIndex(
+		item => scrollY > item - windowHeight
+	);
+	if (imgIndex >= 0) {
+		if (lazyImages[imgIndex].dataset.src) {
+			lazyImages[imgIndex].src = lazyImages[imgIndex].dataset.src;
+			lazyImages[imgIndex].removeAttribute('data-src');
+		}
+		delete lazyImagesPosition[imgIndex];
+	}
+}
+
