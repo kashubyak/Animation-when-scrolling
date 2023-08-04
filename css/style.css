@@ -9,13 +9,10 @@
 
 html,
 body {
-	background: rgb(76, 75, 75);
-	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 	color: #fff;
 	font-size: 16px;
 	scroll-behavior: smooth;
 	height: 100%;
-	overflow-x: hidden;
 	margin: 0;
 }
 
@@ -36,10 +33,7 @@ img {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-}
-
-.header__background-img {
-	background: url(../img/background.jpeg) center / cover no-repeat fixed;
+	overflow-x: hidden;
 }
 
 .fullscreen {
@@ -61,19 +55,83 @@ img {
 	transform: translateY(0px);
 }
 
+.parallax-body {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.parallax-container {
+	position: relative;
+	z-index: 2;
+}
+
+.parallax-images {
+	position: absolute;
+	width: 120%;
+	height: 120%;
+	top: -10%;
+	left: -10%;
+	z-index: 1;
+}
+
+.images-parallax_item {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.images-parallax_clouds,
+.images-parallax_mountains,
+.images-parallax_human {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+}
+
+.images-parallax_clouds {
+	background: url(../img/clouds.jpg) top / cover no-repeat;
+	top: 0;
+}
+
+.images-parallax_mountains {
+	background: url(../img/mountains.png) top / cover no-repeat;
+	top: 15%;
+	z-index: 2;
+}
+
+.images-parallax_human {
+	background: url(../img/human.png) top / cover no-repeat;
+	top: 45%;
+	z-index: 3;
+}
+
+@media (max-aspect-ratio: 3/2) {
+	.images-parallax_human {
+		background-position: 20% top;
+	}
+}
+
 .header_text {
 	padding: 10px;
 	position: relative;
-	top: 45vh;
-	color: rgb(76, 75, 75);
+	top: 10vh;
+	color: rgb(252, 249, 249);
 	font-size: calc(18px + 2 * (100vw / 1366));
 	letter-spacing: 2px;
+	float: right;
+	max-width: 50%;
 }
 
 .header_h1 {
-	transform: translate(0px, 120%);
+	transform: translate(0px, 90%);
 	opacity: 0;
-	transition: all 0.8s ease 0s;
+	transition: all 1s ease 0s;
 	font-size: calc(30px + 10 * (100vw / 1366));
 }
 
@@ -88,7 +146,6 @@ img {
 	transform: translate(0px, 50%);
 	opacity: 0;
 	transition: all 0.8s ease 0.5s;
-	max-width: 50%;
 }
 
 .header_p._active {
@@ -99,6 +156,24 @@ img {
 .maxWidth {
 	max-width: 90%;
 	margin: 0px auto;
+}
+
+.content {
+	background-color: rgb(76, 75, 75);
+	z-index: 2;
+	position: relative;
+}
+
+.content::before {
+	content: '';
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 300px;
+	transform: translateY(-100%);
+	background: linear-gradient(180deg, rgba(11, 29, 38, 0) 5%, rgb(76, 75, 75) 100%);
 }
 
 .h2 {
@@ -291,7 +366,6 @@ img {
 	padding: 0px 20px;
 }
 
-
 @media (max-width: 767px) {
 	.maxWidth {
 		max-width: 100%;
@@ -303,10 +377,6 @@ img {
 
 	.header_text {
 		font-size: calc(18px + (2 + 2 * 0.7) * ((100vw - 320px) / 1366));
-		top: 10vh;
-	}
-
-	.header_p {
 		max-width: 90%;
 	}
 

@@ -1,3 +1,40 @@
+//Parallax Background 
+window.onload = function () {
+	const parallaxBody = document.querySelector('.parallax-body')
+	if (parallaxBody) {
+		const content = document.querySelector('.header_text');
+		const clouds = document.querySelector('.images-parallax_clouds');
+		const mountains = document.querySelector('.images-parallax_mountains');
+		const human = document.querySelector('.images-parallax_human');
+		const forClouds = 40;
+		const forMountains = 20;
+		const forHuman = 10;
+		const speed = 0.05;
+		let positionX = 0, positionY = 0;
+		let coordXProcent = 0, coordYProcent = 0;
+		function setMouseParallaxStyle() {
+			const distX = coordXProcent - positionX;
+			const distY = coordYProcent - positionY;
+			positionX = positionX + (distX * speed);
+			positionY = positionY + (distY * speed);
+			clouds.style.cssText = `transform: translate(${positionX / forClouds}%, ${positionY / forClouds}%);`
+			mountains.style.cssText = `transform: translate(${positionX / forMountains}%, ${positionY / forMountains}%);`
+			human.style.cssText = `transform: translate(${positionX / forHuman}%, ${positionY / forHuman}%);`
+			requestAnimationFrame(setMouseParallaxStyle)
+		}
+		setMouseParallaxStyle();
+		parallaxBody.addEventListener('mousemove', function (event) {
+			const parallaxWidght = parallaxBody.offsetWidth;
+			const parallaxHeight = parallaxBody.offsetHeight;
+			const coordX = event.pageX - (parallaxWidght / 2);
+			const coordY = event.pageY - (parallaxHeight / 2);
+			coordXProcent = coordX / parallaxWidght * 100;
+			coordYProcent = coordY / parallaxHeight * 100;
+		});
+	}
+}
+
+
 //Animation Cite!
 let options = {
 	root: null,
@@ -85,41 +122,6 @@ function closeModal() {
 	}
 };
 
-/// Lazy loading
-
-// const lazyImages = document.querySelectorAll('img[data-src]');
-// const map = document.querySelector('.map');
-// const windowHeight = document.documentElement.clientHeight;
-// let lazyImagesPosition = [];
-// if (lazyImages.length > 0) {
-// 	lazyImages.forEach(img => {
-// 		if (img.dataset.src || img.dataset.srcset) {
-// 			lazyImagesPosition.push(img.getBoundingClientRect().top + scrollY);
-// 			lazyScrollCheck();
-// 		}
-// 	});
-// }
-// window.addEventListener("scroll", function () {
-// 	console.log('work')
-// 	lazyScrollCheck();
-// });
-// function lazyScroll() {
-// 	console.log('work')
-// 	lazyScrollCheck();
-// }
-// function lazyScrollCheck() {
-// 	let imgIndex = lazyImagesPosition.findIndex(
-// 		item => scrollY > item - windowHeight
-// 	);
-// 	if (imgIndex >= 0) {
-// 		if (lazyImages[imgIndex].dataset.src) {
-// 			lazyImages[imgIndex].src = lazyImages[imgIndex].dataset.src;
-// 			lazyImages[imgIndex].removeAttribute('data-src');
-// 		}
-// 		delete lazyImagesPosition[imgIndex];
-// 	}
-// }
-
 // Lazy load 
 const lazyImages = document.querySelectorAll('img[data-src]');
 const lazyMaps = document.querySelectorAll('.map[data-map] > div[data-src]');
@@ -148,4 +150,3 @@ lazyImages.forEach(image => {
 lazyMaps.forEach(map => {
 	lazyLoad(map, map.getAttribute('data-src'));
 });
-
