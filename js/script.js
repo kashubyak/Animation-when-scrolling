@@ -1,15 +1,15 @@
 //Parallax Background 
 window.onload = function () {
-	const parallaxBody = document.querySelector('.parallax-body')
+	const parallaxBody = document.querySelector('.parallax-body');
 	if (parallaxBody) {
 		const content = document.querySelector('.header_text');
 		const clouds = document.querySelector('.images-parallax_clouds');
 		const mountains = document.querySelector('.images-parallax_mountains');
 		const human = document.querySelector('.images-parallax_human');
-		const forClouds = 40;
-		const forMountains = 20;
-		const forHuman = 10;
-		const speed = 0.05;
+		const forClouds = 25;
+		const forMountains = 10;
+		const forHuman = 5;
+		const speed = 0.1;
 		let positionX = 0, positionY = 0;
 		let coordXProcent = 0, coordYProcent = 0;
 		function setMouseParallaxStyle() {
@@ -94,8 +94,8 @@ function openModal(imageSrc, imageName) {
 	const modal = document.createElement('div');
 	modal.classList.add('modal');
 	modal.innerHTML = `
-	<span class="close-btn" onclick="closeModal()">&times;</span>
-	<img src="${imageSrc}" alt="${imageName}">`;
+				< span class= "close-btn" onclick = "closeModal()" >& times;</ >
+					<img src="${imageSrc}" alt="${imageName}">`;
 
 	modal.addEventListener('click', (event) => {
 		if (event.target === modal) {
